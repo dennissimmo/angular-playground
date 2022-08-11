@@ -1,0 +1,19 @@
+.container {
+  height: 600px;
+  width: 700px;
+  margin: 0 auto;
+  background: #f5ea6d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 100px;
+  height: 30px;
+}
+
+.open {
+  background-color: #1976d2;
+  width: 200px;
+}

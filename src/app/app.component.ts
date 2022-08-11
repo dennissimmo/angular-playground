@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'practice';
+  status: boolean = true;
+  isMenuOpened: boolean;
+
+  toggleMenu() {
+    this.isMenuOpened = !this.isMenuOpened;
+  }
+
+  clickedOutside() {
+    this.isMenuOpened = false;
+  }
 }
