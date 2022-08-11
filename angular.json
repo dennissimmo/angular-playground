@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -95,6 +98,104 @@
             ],
             "styles": [
               "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "practice-project": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/practice-project",
+      "sourceRoot": "projects/practice-project/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/practice-project",
+            "index": "projects/practice-project/src/index.html",
+            "main": "projects/practice-project/src/main.ts",
+            "polyfills": "projects/practice-project/src/polyfills.ts",
+            "tsConfig": "projects/practice-project/tsconfig.app.json",
+            "assets": [
+              "projects/practice-project/src/favicon.ico",
+              "projects/practice-project/src/assets"
+            ],
+            "styles": [
+              "projects/practice-project/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/practice-project/src/environments/environment.ts",
+                  "with": "projects/practice-project/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "practice-project:build:production"
+            },
+            "development": {
+              "browserTarget": "practice-project:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "practice-project:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/practice-project/src/test.ts",
+            "polyfills": "projects/practice-project/src/polyfills.ts",
+            "tsConfig": "projects/practice-project/tsconfig.spec.json",
+            "karmaConfig": "projects/practice-project/karma.conf.js",
+            "assets": [
+              "projects/practice-project/src/favicon.ico",
+              "projects/practice-project/src/assets"
+            ],
+            "styles": [
+              "projects/practice-project/src/styles.css"
             ],
             "scripts": []
           }
